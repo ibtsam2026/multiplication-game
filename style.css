@@ -1,0 +1,172 @@
+/* =============================
+   نمط واجهة لعبة جدول الضرب
+   ============================= */
+:root {
+  --bg: #fffaf0;
+  --primary: #ffcc00;   /* أصفر مبهج */
+  --accent1: #00bcd4;   /* سماوي */
+  --accent2: #ff6f61;   /* مرجاني */
+  --accent3: #8bc34a;   /* أخضر لطيف */
+  --text: #222;
+  --card: #ffffff;
+  --shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Tahoma, "Cairo", "Noto Naskh Arabic", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 20%, #fff9e6 10%, var(--bg) 70%);
+  color: var(--text);
+}
+
+.hero {
+  text-align: center;
+  padding: 20px 16px;
+}
+.hero h1 {
+  margin: 0 0 8px 0;
+  font-size: 2.2rem;
+  color: #0d47a1;
+  text-shadow: 0 2px 0 rgba(255,255,255,0.6);
+}
+.hero .subtitle {
+  margin: 0;
+  color: #444;
+}
+
+.grid-section { padding: 10px 16px 0 16px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+  max-width: 1100px;
+  margin: 0 auto 20px auto;
+}
+
+.student-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 3px solid var(--primary);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 14px 10px;
+  min-height: 100px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.student-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+.student-card:active {
+  transform: scale(0.98);
+}
+.student-card .number {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #222;
+}
+.student-card .status-icon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 1.2rem;
+}
+
+.student-card.completed {
+  background: linear-gradient(135deg, #e6ffe6, #f6fff0);
+  border-color: var(--accent3);
+}
+.student-card.completed .status-icon {
+  color: #2e7d32;
+}
+
+/* المودال */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  z-index: 1000;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  width: min(720px, 96vw);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+  overflow: hidden;
+}
+.modal-header {
+  background: linear-gradient(90deg, var(--primary), var(--accent1));
+  color: #083a6a;
+  padding: 14px 16px;
+}
+.modal-header h3 {
+  margin: 0 0 6px 0;
+}
+.score, .progress {
+  font-weight: bold;
+}
+.question-area { padding: 16px; }
+.question {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.choice-btn {
+  background: #ffffff;
+  border: 2px solid #1976d2;
+  border-radius: 14px;
+  padding: 12px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, background .15s ease, border-color .15s ease;
+}
+.choice-btn:hover { transform: translateY(-2px); }
+.choice-btn.correct { background: #e8f5e9; border-color: #2e7d32; }
+.choice-btn.wrong { background: #ffebee; border-color: #c62828; }
+
+.feedback {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 16px 18px 16px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* عناصر مخفية لسهولة الوصول */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .student-card { min-height: 90px; }
+  .question { font-size: 1.6rem; }
+  .choice-btn { font-size: 1.1rem; }
+}

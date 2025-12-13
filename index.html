@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لعبة جدول الضرب</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>لعبة جدول الضرب</h1>
+    <p class="subtitle">اختبار ممتع لجدول ٢ إلى ٩ لطلاب الصف الأول المتوسط</p>
+  </header>
+
+  <main>
+    <section class="grid-section">
+      <h2 class="visually-hidden">شبكة الطلاب</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="credits">
+    <p>تصميم وإعداد/ أ. عمرو ظافر العمري</p>
+    <p>مدرسة سعيد بن نسيب الابتدائية</p>
+  </footer>
+
+  <!-- نافذة الأسئلة (المودال) -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="questionTitle">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal" aria-label="إغلاق">×</button>
+      <div class="modal-header">
+        <h3 id="questionTitle">اختبر نفسك</h3>
+        <div id="score" class="score">الدرجة: ٠/٥</div>
+        <div id="progress" class="progress">السؤال ١ من ٥</div>
+      </div>
+      <div class="question-area">
+        <div id="questionText" class="question">—</div>
+        <div id="choices" class="choices"></div>
+      </div>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- مؤثرات صوتية -->
+  <audio id="winSound" src="win.mp3" preload="auto"></audio>
+  <audio id="loseSound" src="lose.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
